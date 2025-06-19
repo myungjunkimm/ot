@@ -60,8 +60,6 @@ if menu2_clicked:
 if menu3_clicked:
     st.session_state.selected_menu = "비회원 후기 작성 프로세스"
 
-# 현재 선택된 메뉴 표시
-st.sidebar.markdown(f"**현재 선택:** {st.session_state.selected_menu}")
 
 # 메인 콘텐츠 영역
 def create_user_review_flowchart():
@@ -227,8 +225,6 @@ def create_nonmember_review_swimlane():
 # 메인 화면 렌더링
 current_menu = st.session_state.selected_menu
 
-# 디버깅용 - 현재 메뉴 확인
-st.write(f"DEBUG: 현재 선택된 메뉴 = '{current_menu}'")
 
 st.title("📝 후기 작성 프로세스 플로우차트")
 st.markdown("---")
@@ -236,9 +232,7 @@ st.markdown("---")
 if current_menu == "사용자별 후기 작성 프로세스":
     st.header("🔄 사용자별 후기 작성 프로세스")
     st.markdown("""
-    **도착 +7일 이후 사용자 구분에 따른 후기 작성 프로세스**
-    
-    이 플로우차트는 여행 상품 이용 후 후기 작성 과정을 회원과 비회원으로 구분하여 보여줍니다.
+    이 플로우차트는 여행 상품 이용 후 후기 작성 과정을 회원과 비회원으로 구분하여 보여줍니다. *상세 플로우는 회원 후기 작성 프로세스 및 비회원 후기 작성 프로세스 확인인
     """)
     
     # 플로우차트 생성 및 표시
@@ -262,7 +256,7 @@ if current_menu == "사용자별 후기 작성 프로세스":
             st.subheader("👥 비회원 프로세스")
             st.markdown("""
             1. **담당자 문의**: 고객센터 연락 필요
-            2. **본인확인**: 3단계 인증 과정
+            2. **본인확인**: 휴대폰 본인 인증
             3. **수동 매핑**: 담당자가 직접 상품 연결
             4. **검토 후 노출**: 담당자 승인 후 게시
             """)
@@ -294,8 +288,6 @@ if current_menu == "사용자별 후기 작성 프로세스":
 elif current_menu == "회원 후기 작성 프로세스":
     st.header("👤 회원 후기 작성 프로세스")
     st.markdown("""
-    **회원의 마이페이지를 통한 후기 작성 프로세스 (Swimlane)**
-    
     이 다이어그램은 OT 회원, 서버, 프론트엔드 간의 상호작용을 보여줍니다.
     """)
     
@@ -371,8 +363,6 @@ elif current_menu == "회원 후기 작성 프로세스":
 elif current_menu == "비회원 후기 작성 프로세스":
     st.header("👥 비회원 후기 작성 프로세스")
     st.markdown("""
-    **비회원의 후기 작성 프로세스 (Swimlane)**
-    
     이 다이어그램은 비회원 사용자와 OBMS 담당자 간의 상호작용을 보여줍니다.
     🚩 표시는 중요한 처리 단계를 나타냅니다.
     """)
@@ -415,6 +405,23 @@ elif current_menu == "비회원 후기 작성 프로세스":
         2. **관련 상품 매칭**: 담당자가 수동으로 예약번호를 통해 상품번호 조회 및 매핑
         3. **등록 상태값 및 노출 여부 결정**: 담당자 검토를 통한 최종 승인 단계
         """)
+
+                # 중요 프로세스 강조
+        st.subheader("🚩 비회원 후기 수집 정보보")
+        st.markdown("""
+        1. **이름**
+        2. **휴대폰번호(인증 필수)**
+        3. **비밀번호 등록**
+        4. **비밀번호 확인**
+        """)
+
+        # 중요 프로세스 강조
+        st.subheader("🚩본인 인증 완료 후 추가 수집 정보")
+        st.markdown("""
+        1. 출발하신 일자가 언제였나요?
+        2. 다녀오신 여행지가 어디였나요?
+        3. 여행하신 상품이 다음이 맞나요? 
+        """)
         
     except Exception as e:
         st.error("비회원 후기 작성 Swimlane 다이어그램을 생성하는 중 오류가 발생했습니다.")
@@ -435,6 +442,3 @@ elif current_menu == "비회원 후기 작성 프로세스":
         ```
         """)
 
-# 푸터
-st.markdown("---")
-st.markdown("💡 **팁**: 좌측 메뉴에서 다른 프로세스도 확인해보세요!")
