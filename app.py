@@ -80,7 +80,7 @@ def create_user_review_flowchart():
     
     # 회원 프로세스 (연한 초록색)
     dot.node('E1', '회원', fillcolor='lightgreen')
-    dot.node('F1', '알림톡 발송', fillcolor='lightgreen')
+    dot.node('F1', '알림톡 수신', fillcolor='lightgreen')
     dot.node('G1', '후기 작성 페이지\n접속', fillcolor='lightgreen')
     dot.node('H1', '후기 작성', fillcolor='lightgreen')
     dot.node('I1', '상품 자동 매핑', fillcolor='lightgreen')
@@ -246,7 +246,7 @@ if current_menu == "사용자별 후기 작성 프로세스":
         with col1:
             st.subheader("👤 회원 프로세스")
             st.markdown("""
-            1. **알림톡 발송**: 자동으로 후기 작성 알림
+            1. **알림톡 수신**: 자동으로 후기 작성 알림
             2. **후기 작성**: 간편한 온라인 작성
             3. **자동 매핑**: 상품 정보 자동 연결
             4. **즉시 노출**: 작성 완료 시 바로 게시
